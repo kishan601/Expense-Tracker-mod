@@ -1,0 +1,50 @@
+/* Shared styles for page components */
+.page-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--foreground);
+  }
+  
+  .page-subtitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--muted-foreground);
+  }
+  
+  .page-content {
+    background-color: var(--card-dark);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .page-actions {
+    display: flex;
+    gap: 12px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    
+    .page-actions {
+      width: 100%;
+    }
+  }

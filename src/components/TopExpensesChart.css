@@ -1,0 +1,51 @@
+.top-expenses-chart {
+    height: 100%;
+  }
+  
+  .expenses-by-category {
+    margin-top: 20px;
+  }
+  
+  .category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  
+  .category-item:last-child {
+    border-bottom: none;
+  }
+  
+  .category-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .category-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .category-name {
+    font-size: 14px;
+    color: var(--text-primary);
+    text-transform: capitalize;
+  }
+  
+  .category-amount {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .no-data-message {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+  }

@@ -1,0 +1,76 @@
+.wallet-card {
+    background-color: var(--card-dark);
+    border-radius: 16px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .wallet-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .wallet-add-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .wallet-add-btn:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+  }
+  
+  .wallet-balance {
+    margin: 24px 0;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .balance-label {
+    color: var(--muted-foreground);
+    margin: 0 0 8px 0;
+    font-size: 14px;
+  }
+  
+  .balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(to right, var(--primary), #3fcbff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .wallet-income-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  
+  .wallet-income-btn:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+  }

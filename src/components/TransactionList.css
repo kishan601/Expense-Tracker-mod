@@ -1,0 +1,111 @@
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    transition: background-color 0.2s;
+  }
+  
+  .transaction-item:hover {
+    background-color: var(--card-medium);
+  }
+  
+  .transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  
+  .transaction-details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .transaction-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  
+  .transaction-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .transaction-amount {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+  
+  .transaction-meta {
+    display: flex;
+    font-size: 12px;
+    color: var(--muted-foreground);
+  }
+  
+  .transaction-category {
+    margin-right: 8px;
+  }
+  
+  .transaction-category::after {
+    content: '•';
+    margin-left: 8px;
+  }
+  
+  .transaction-actions {
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .transaction-item:hover .transaction-actions {
+    opacity: 1;
+  }
+  
+  .action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+  }
+  
+  .edit-btn {
+    color: var(--foreground);
+  }
+  
+  .edit-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .delete-btn {
+    color: rgb(255, 92, 129);
+  }
+  
+  .delete-btn:hover {
+    background-color: rgba(255, 92, 129, 0.1);
+  }

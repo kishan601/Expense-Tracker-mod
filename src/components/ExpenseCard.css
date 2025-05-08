@@ -1,0 +1,86 @@
+.expense-card {
+    background-color: var(--card-dark);
+    border-radius: 16px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .expense-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .expense-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .expense-add-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .expense-add-btn:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+  }
+  
+  .expense-amount {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+    flex: 1;
+  }
+  
+  .expense-icon {
+    background-color: rgba(255, 92, 129, 0.1);
+    color: rgb(255, 92, 129);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .expense-label {
+    color: var(--muted-foreground);
+    margin: 0 0 4px 0;
+    font-size: 14px;
+  }
+  
+  .expense-total {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: rgb(255, 92, 129);
+  }
+  
+  .add-expense-btn {
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    width: 100%;
+  }
+  
+  .add-expense-btn:hover {
+    background-color: rgba(124, 58, 237, 0.9);
+  }
