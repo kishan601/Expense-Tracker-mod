@@ -390,11 +390,31 @@ export default function Home({ darkMode, setDarkMode }) {
       
       {/* Main Dashboard Grid */}
       <div className="dashboard-grid">
-        {/* Wallet Card */}
+        {/* Enhanced Wallet Card */}
         <div className="wallet-card">
           <div className="wallet-balance-container">
             <div className="wallet-label">Wallet Balance</div>
-            <div className="wallet-balance">${parseFloat(wallet.balance).toLocaleString()}</div>
+            <div className="wallet-balance-wrapper">
+              <div className="wallet-balance-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="2" />
+                  <line x1="2" y1="10" x2="22" y2="10" />
+                </svg>
+              </div>
+              <div className="wallet-amount-container">
+                <span className="wallet-currency">$</span>
+                <span className="wallet-amount-value">{parseFloat(wallet.balance).toLocaleString()}</span>
+              </div>
+            </div>
+            <div className="wallet-trend">
+              <div className="wallet-trend-icon positive">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
+                </svg>
+              </div>
+              <span className="wallet-trend-label">Healthy Balance</span>
+            </div>
             <button 
               className="wallet-add-btn" 
               onClick={() => setShowAddIncomeModal(true)}
@@ -415,17 +435,35 @@ export default function Home({ darkMode, setDarkMode }) {
               </button>
             </div>
             <div className="wallet-savings-amount">${savingsGoal.toLocaleString()}</div>
+            <div className="savings-progress-info">
+              <span className="savings-progress-label">Current Progress</span>
+              <span className="savings-progress-value">${parseFloat(wallet.balance).toLocaleString()} of ${savingsGoal.toLocaleString()}</span>
+            </div>
             <div className="progress-bar-container">
               <div 
                 className="progress-bar" 
-                style={{ width: `${savingsPercentage}%` }}
+                style={{ 
+                  width: `${savingsPercentage}%`,
+                  backgroundColor: savingsPercentage > 75 ? '#10B981' : savingsPercentage > 40 ? '#3B82F6' : '#7C3AED'
+                }}
               ></div>
             </div>
-            <div className="progress-percentage">{savingsPercentage}%</div>
+            <div className="savings-footer">
+              <div className="savings-percentage">{savingsPercentage}%</div>
+              <div className="savings-estimate">
+                {/* Simplified calculation assuming monthly savings of 10% of budget */}
+                {parseFloat(wallet.balance) < savingsGoal && (
+                  <span>Est. completion in {Math.ceil((savingsGoal - parseFloat(wallet.balance)) / (monthlyBudget * 0.1))} months</span>
+                )}
+                {parseFloat(wallet.balance) >= savingsGoal && (
+                  <span>Goal achieved! 🎉</span>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         
-        {/* Budget Card */}
+        {/* Enhanced Budget Card */}
         <div className="budget-card">
           <div className="budget-header">
             <div className="budget-title">Monthly Budget</div>
@@ -437,21 +475,96 @@ export default function Home({ darkMode, setDarkMode }) {
               <FiEdit2 />
             </button>
           </div>
-          <div className="budget-amount">${monthlyBudget.toLocaleString()}</div>
-          <div className="budget-spent">Spent: ${totalExpenses.toLocaleString()}</div>
-          <div className="progress-bar-container">
-            <div 
-              className="progress-bar" 
-              style={{ width: `${budgetPercentage}%` }}
-            ></div>
+          
+          {/* Enhanced Budget Amount Display */}
+          <div className="budget-amount-container">
+            <span className="budget-currency">$</span>
+            <span className="budget-amount-value">{monthlyBudget.toLocaleString()}</span>
           </div>
-          <div className="budget-remaining">
-            <span>Remaining: ${(monthlyBudget - totalExpenses).toLocaleString()}</span>
-            <span className="budget-percentage">{budgetPercentage}%</span>
+          
+          {/* Budget Progress Stats */}
+          <div className="budget-stats-grid">
+            <div className="budget-stat">
+              <div className="budget-stat-icon" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)' }}>
+                <FiPlus size={18} color="#7C3AED" />
+              </div>
+              <div className="budget-stat-info">
+                <div className="budget-stat-label">Spent</div>
+                <div className="budget-stat-value">${totalExpenses.toLocaleString()}</div>
+              </div>
+            </div>
+            
+            <div className="budget-stat">
+              <div className="budget-stat-icon" style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)' }}>
+                <FiRefreshCw size={18} color="#10B981" />
+              </div>
+              <div className="budget-stat-info">
+                <div className="budget-stat-label">Remaining</div>
+                <div className="budget-stat-value">${(monthlyBudget - totalExpenses).toLocaleString()}</div>
+              </div>
+            </div>
           </div>
+          
+          {/* Enhanced Progress Bar */}
+          <div className="budget-progress-section">
+            <div className="budget-progress-header">
+              <span>Budget Usage</span>
+              <span className="budget-progress-percentage" style={{ 
+                color: budgetPercentage > 75 ? '#ef4444' : budgetPercentage > 50 ? '#f59e0b' : '#10b981'
+              }}>
+                {budgetPercentage}%
+              </span>
+            </div>
+            
+            <div className="progress-bar-container">
+              <div 
+                className="progress-bar" 
+                style={{ 
+                  width: `${budgetPercentage}%`,
+                  backgroundColor: budgetPercentage > 75 ? '#ef4444' : budgetPercentage > 50 ? '#f59e0b' : '#10b981'
+                }}
+              ></div>
+            </div>
+          </div>
+          
+          {/* Top Spending Categories Mini-Bars */}
+          {topCategoriesData.length > 0 && (
+            <div className="budget-categories-section">
+              <h4 className="budget-section-title">Top Spending</h4>
+              
+              {topCategoriesData.slice(0, 2).map((category, index) => (
+                <div className="mini-category" key={index}>
+                  <div className="mini-category-info">
+                    <div className="mini-category-dot" style={{backgroundColor: category.color}}></div>
+                    <span className="mini-category-name">{category.name}</span>
+                    <span className="mini-category-amount">${category.value.toLocaleString()}</span>
+                  </div>
+                  <div className="mini-progress-container">
+                    <div className="mini-progress-bar" 
+                      style={{
+                        width: `${Math.min(100, Math.round((category.value / monthlyBudget) * 100))}%`, 
+                        backgroundColor: category.color
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Budget Status Indicator */}
+              <div className="budget-status">
+                {budgetPercentage <= 50 ? (
+                  <div className="budget-status-good">On Track</div>
+                ) : budgetPercentage <= 75 ? (
+                  <div className="budget-status-warning">Watch Spending</div>
+                ) : (
+                  <div className="budget-status-danger">Over Budget</div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
         
-        {/* Expense Card */}
+        {/* Enhanced Expense Card */}
         <div className="expense-card">
           <div className="expense-header">
             <div className="expense-title">Total Expenses</div>
@@ -462,38 +575,94 @@ export default function Home({ darkMode, setDarkMode }) {
               + Add Expense
             </button>
           </div>
-          <div className="expense-amount">${totalExpenses.toLocaleString()}</div>
+          
+          <div className="expense-amount-container">
+            <span className="expense-currency">$</span>
+            <span className="expense-amount-value">{totalExpenses.toLocaleString()}</span>
+          </div>
+          
+          <div className="expense-summary">
+            <div className="expense-summary-ring">
+              <svg viewBox="0 0 36 36" className="expense-summary-chart">
+                <path
+                  className="expense-summary-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path
+                  className="expense-summary-fill"
+                  strokeDasharray={`${budgetPercentage}, 100`}
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <text x="18" y="20.35" className="expense-summary-text">
+                  {budgetPercentage}%
+                </text>
+              </svg>
+              <div className="expense-summary-label">of budget</div>
+            </div>
+          </div>
           
           {/* Top Category & Avg. Expense */}
           <div className="expense-metrics-grid">
             <div className="expense-metric">
-              <div className="metric-label">Top Category</div>
-              <div className="metric-value">
-                <div 
-                  className="category-indicator" 
+              <div className="metric-icon" style={{ backgroundColor: `${getCategoryColor(topCategory)}20` }}>
+                <div className="category-indicator" 
                   style={{ backgroundColor: getCategoryColor(topCategory) }}
                 ></div>
-                {topCategory.charAt(0).toUpperCase() + topCategory.slice(1)}
+              </div>
+              <div className="metric-info">
+                <div className="metric-label">Top Category</div>
+                <div className="metric-value">{topCategory.charAt(0).toUpperCase() + topCategory.slice(1)}</div>
               </div>
             </div>
             <div className="expense-metric">
-              <div className="metric-label">Avg. Expense</div>
-              <div className="metric-value">${avgExpense.toLocaleString()}</div>
+              <div className="metric-icon" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="20" x2="12" y2="10" />
+                  <line x1="18" y1="20" x2="18" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="16" />
+                </svg>
+              </div>
+              <div className="metric-info">
+                <div className="metric-label">Avg. Expense</div>
+                <div className="metric-value">${avgExpense.toLocaleString()}</div>
+              </div>
             </div>
           </div>
           
           {/* Last Expense */}
           <div className="last-expense">
             <div className="last-expense-header">Last Expense</div>
-            <div className="last-expense-details">
-              <div className="last-expense-category">
-                <div 
-                  className="category-indicator" 
-                  style={{ backgroundColor: getCategoryColor(lastExpense.category) }}
-                ></div>
-                {lastExpense.category.charAt(0).toUpperCase() + lastExpense.category.slice(1)}
-              </div>
-              <div className="last-expense-amount">${lastExpense.amount.toLocaleString()}</div>
+            <div className="last-expense-card">
+              {expenses.length > 0 ? (
+                <>
+                  <div className="last-expense-icon" style={{ backgroundColor: `${getCategoryColor(lastExpense.category)}20` }}>
+                    <div className="category-indicator" 
+                      style={{ backgroundColor: getCategoryColor(lastExpense.category) }}
+                    ></div>
+                  </div>
+                  <div className="last-expense-info">
+                    <div className="last-expense-title">{lastExpense.title || 'Expense'}</div>
+                    <div className="last-expense-category">
+                      {lastExpense.category.charAt(0).toUpperCase() + lastExpense.category.slice(1)}
+                    </div>
+                  </div>
+                  <div className="last-expense-amount">${lastExpense.amount.toLocaleString()}</div>
+                </>
+              ) : (
+                <div className="no-expense-message">
+                  <div>No expenses recorded yet</div>
+                  <button 
+                    className="btn-small" 
+                    onClick={() => setShowAddExpenseModal(true)}
+                  >
+                    Add your first
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -602,7 +771,7 @@ export default function Home({ darkMode, setDarkMode }) {
                         <FiEdit2 />
                       </button>
                       <button 
-                        className="delete-button" 
+                        className="delete-button"
                         onClick={() => handleDeleteExpense(expense.id)}
                         aria-label="Delete transaction"
                       >
@@ -616,83 +785,54 @@ export default function Home({ darkMode, setDarkMode }) {
               <div className="no-transactions">
                 <p>No transactions yet</p>
                 <button 
-                  className="add-transaction-btn" 
+                  className="btn btn-primary" 
                   onClick={() => setShowAddExpenseModal(true)}
                 >
-                  + Add Your First Expense
+                  Add Expense
                 </button>
               </div>
             )}
           </div>
-          
-          {expenses.length > 5 && (
-            <div className="view-all">
-              <Link to="/reports">View All Transactions</Link>
-            </div>
-          )}
         </div>
-      </div>
-      
-      {/* Budget Actions */}
-      <div className="budget-actions">
-        <button className="btn btn-outline" onClick={() => navigate('/reports')}>Reports</button>
-        <button className="btn btn-outline" onClick={() => navigate('/budgets')}>Budgets</button>
-        <button className="btn btn-outline" onClick={() => navigate('/bills')}>Bills</button>
       </div>
       
       {/* Modals */}
       {showAddExpenseModal && (
-        <AddExpenseModal
-          darkMode={darkMode}
+        <AddExpenseModal 
           onClose={() => setShowAddExpenseModal(false)}
-          onAddExpense={(data) => {
-            handleAddExpense(data);
-            setShowAddExpenseModal(false);
-          }}
+          onAddExpense={handleAddExpense}
         />
       )}
-
+      
       {showAddIncomeModal && (
-        <AddIncomeModal
-          darkMode={darkMode}
+        <AddIncomeModal 
           onClose={() => setShowAddIncomeModal(false)}
-          onAddIncome={(amount) => {
-            handleAddIncome(amount);
-            setShowAddIncomeModal(false);
-          }}
+          onAddIncome={handleAddIncome}
         />
       )}
-
+      
       {showEditExpenseModal && currentExpense && (
-        <EditExpenseModal
-          darkMode={darkMode}
+        <EditExpenseModal 
           expense={currentExpense}
           onClose={() => {
             setShowEditExpenseModal(false);
             setCurrentExpense(null);
           }}
-          onUpdateExpense={(data) => {
-            handleUpdateExpense(currentExpense.id, data);
-            setShowEditExpenseModal(false);
-            setCurrentExpense(null);
-          }}
+          onUpdateExpense={(data) => handleUpdateExpense(currentExpense.id, data)}
         />
       )}
       
       {showBudgetEditModal && (
-        <BudgetEditModal
-          darkMode={darkMode}
+        <BudgetEditModal 
           currentBudget={monthlyBudget}
           currentSavingsGoal={savingsGoal}
           onClose={() => setShowBudgetEditModal(false)}
-          onSave={(data) => {
-            handleBudgetSettingsUpdate(data);
-            setShowBudgetEditModal(false);
-          }}
+          onUpdateBudgetSettings={handleBudgetSettingsUpdate}
         />
       )}
-
-      <ToastContainer position="bottom-right" theme={darkMode ? "dark" : "light"} />
+      
+      {/* Toast Container */}
+      <ToastContainer position="bottom-right" theme={darkMode ? 'dark' : 'light'} />
     </div>
   );
 }

@@ -1073,3 +1073,1172 @@ select.form-control {
   color: var(--primary);
 }
 
+/* Enhanced Budget Styling */
+.budget-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.budget-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.budget-stat-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.budget-stat-label {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.budget-stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.budget-progress-section {
+  margin-top: 32px;
+  padding: 20px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 12px;
+}
+
+.budget-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.budget-progress-header h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.budget-progress-percentage {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.progress-bar-container {
+  height: 12px;  /* Increased height */
+  margin-bottom: 16px;
+}
+
+.budget-progress-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* Enhanced Budget Card Styling */
+.budget-amount-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.budget-currency {
+  font-size: 1.5rem;
+  margin-right: 4px;
+  color: #7C3AED;
+  opacity: 0.8;
+}
+
+.budget-amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #7C3AED;
+}
+
+.budget-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.budget-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.budget-stat:hover {
+  transform: translateY(-2px);
+}
+
+.budget-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.budget-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.budget-stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.budget-progress-section {
+  margin-bottom: 20px;
+}
+
+.budget-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+}
+
+.budget-progress-percentage {
+  font-weight: 600;
+}
+
+.budget-categories-section {
+  padding-top: 15px;
+  border-top: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.budget-section-title {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.mini-category {
+  margin-bottom: 12px;
+}
+
+.mini-category-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.mini-category-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.mini-category-name {
+  font-size: 0.875rem;
+}
+
+.mini-category-amount {
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.mini-progress-container {
+  height: 6px;
+  background-color: rgba(30, 41, 59, 0.6);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.mini-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.budget-status {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.budget-status-good,
+.budget-status-warning,
+.budget-status-danger {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.budget-status-good {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.budget-status-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+}
+
+.budget-status-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+/* Enhanced Wallet Card Styling */
+.wallet-balance-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.wallet-balance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(124, 58, 237, 0.1);
+  border-radius: 12px;
+  color: #7C3AED;
+}
+
+.wallet-balance-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.wallet-amount-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.wallet-currency {
+  font-size: 1.5rem;
+  margin-right: 4px;
+  color: #7C3AED;
+  opacity: 0.8;
+}
+
+.wallet-amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #7C3AED;
+  line-height: 1;
+}
+
+.wallet-trend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.875rem;
+  color: #10B981;
+}
+
+.wallet-trend-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-trend-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.wallet-trend-icon.positive {
+  color: #10B981;
+}
+
+.wallet-trend-icon.negative {
+  color: #EF4444;
+  transform: rotate(180deg);
+}
+
+.wallet-add-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #7C3AED;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wallet-add-btn:hover {
+  background-color: rgba(124, 58, 237, 0.2);
+}
+
+.savings-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 6px;
+}
+
+.savings-progress-label {
+  color: #94a3b8;
+}
+
+.savings-progress-value {
+  font-weight: 500;
+}
+
+.savings-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.savings-percentage {
+  font-weight: 600;
+  color: #7C3AED;
+}
+
+.savings-estimate {
+  font-size: 0.75rem;
+  color: #fdfdfd;
+}
+
+/* Enhanced Expense Card Styling */
+.expense-amount-container {
+  display: flex;
+  align-items: baseline;
+  margin: 15px 0;
+}
+
+.expense-currency {
+  font-size: 1.5rem;
+  margin-right: 4px;
+  color: #EF4444;
+  opacity: 0.8;
+}
+
+.expense-amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #EF4444;
+  line-height: 1;
+}
+
+.expense-summary {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 20px;
+}
+
+.expense-summary-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-summary-chart {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.expense-summary-bg {
+  fill: none;
+  stroke: rgba(30, 41, 59, 0.4);
+  stroke-width: 3;
+}
+
+.expense-summary-fill {
+  fill: none;
+  stroke: #EF4444;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.expense-summary-text {
+  fill: #EF4444;
+  font-size: 0.7rem;
+  text-anchor: middle;
+  font-weight: 700;
+  transform: rotate(90deg);
+}
+
+.expense-summary-label {
+  position: absolute;
+  bottom: 15px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.expense-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.expense-metric {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.expense-metric:hover {
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.metric-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.last-expense-header {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+.last-expense-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 10px;
+}
+
+.last-expense-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.last-expense-info {
+  flex: 1;
+}
+
+.last-expense-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.last-expense-category {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.last-expense-amount {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #EF4444;
+}
+
+.no-expense-message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #7C3AED;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-small:hover {
+  background-color: rgba(124, 58, 237, 0.2);
+}
+
+.light-mode .wallet-card,
+.light-mode .budget-card,
+.light-mode .expense-card,
+.light-mode .chart-card,
+.light-mode .transactions-card {
+  background-color: var(--card-light-bg);
+  border: 1px solid var(--card-light-border);
+  box-shadow: var(--card-light-shadow);
+  color: var(--light-text-primary);
+}
+/* Light Mode Budget Card */
+.light-mode .budget-stat {
+  background-color: var(--light-stat-bg);
+  border: 1px solid var(--card-light-border);
+}
+.light-mode .budget-stat-label,
+.light-mode .budget-section-title,
+.light-mode .mini-category-name {
+  color: var(--light-text-secondary);
+}
+.light-mode .mini-progress-container {
+  background-color: var(--light-progress-bg);
+}
+/* Light Mode Expense Card */
+.light-mode .expense-metric {
+  background-color: var(--light-stat-bg);
+  border: 1px solid var(--card-light-border);
+}
+.light-mode .metric-label,
+.light-mode .last-expense-header {
+  color: var(--light-text-secondary);
+}
+.light-mode .expense-summary-bg {
+  stroke: var(--light-progress-bg);
+}
+.light-mode .last-expense-card {
+  background-color: var(--light-stat-bg);
+  border: 1px solid var(--card-light-border);
+}
+.light-mode .last-expense-category {
+  color: var(--light-text-secondary);
+}
+/* Light Mode Wallet Card */
+.light-mode .wallet-balance-icon {
+  background-color: var(--light-stat-bg);
+}
+.light-mode .wallet-add-btn {
+  background-color: var(--light-stat-bg);
+}
+.light-mode .savings-progress-label,
+.light-mode .savings-estimate {
+  color: var(--light-text-secondary);
+}
+.light-mode .progress-bar-container {
+  background-color: var(--light-progress-bg);
+}
+
+/* Light Theme Improvements - Add to your .light-theme declaration */
+.light-theme {
+  --background: var(--background-light);
+  --card: var(--card-light);
+  --card-medium: var(--card-medium-light);
+  --border: var(--border-light);
+  --text: var(--text-light);
+  --text-muted: var(--text-muted-light);
+  
+  /* Add these new light mode specific variables */
+  --input-bg-light: #f8fafc;
+  --hover-bg-light: #f1f5f9;
+  --danger-light: rgba(239, 68, 68, 0.1);
+  --success-light: rgba(16, 185, 129, 0.1);
+  --warning-light: rgba(245, 158, 11, 0.1);
+}
+
+/* Light Mode Card Improvements */
+.light-theme .wallet-card,
+.light-theme .budget-card,
+.light-theme .expense-card,
+.light-theme .category-chart-card,
+.light-theme .weekly-chart-card,
+.light-theme .transactions-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.light-theme .wallet-balance {
+  color: var(--primary);
+  -webkit-text-fill-color: var(--primary);
+  background: none;
+}
+
+.light-theme .expense-amount {
+  color: var(--danger);
+  -webkit-text-fill-color: var(--danger);
+}
+
+.light-theme .progress-bar-container {
+  background-color: #e2e8f0;
+}
+
+.light-theme .expense-metric,
+.light-theme .last-expense {
+  background-color: var(--hover-bg-light);
+  border: 1px solid var(--border);
+}
+
+.light-theme .form-control {
+  background-color: var(--input-bg-light);
+}
+
+.light-theme .btn-outline:hover {
+  background-color: var(--hover-bg-light);
+}
+
+.light-theme .transaction-item:hover {
+  background-color: var(--hover-bg-light);
+}
+
+.light-theme .modal-close:hover {
+  background-color: var(--hover-bg-light);
+}
+
+/* Enhanced Budget Styles */
+.budget-amount-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.budget-currency {
+  font-size: 1.5rem;
+  margin-right: 4px;
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.budget-amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.budget-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.budget-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: var(--card-medium);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.light-theme .budget-stat {
+  background-color: var(--hover-bg-light);
+  border: 1px solid var(--border);
+}
+
+.budget-stat:hover {
+  transform: translateY(-2px);
+}
+
+.budget-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.budget-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.budget-stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.budget-progress-section {
+  margin-bottom: 20px;
+}
+
+.budget-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+}
+
+.budget-progress-percentage {
+  font-weight: 600;
+}
+
+.budget-categories-section {
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.budget-section-title {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.mini-category {
+  margin-bottom: 12px;
+}
+
+.mini-category-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.mini-category-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.mini-category-name {
+  font-size: 0.875rem;
+}
+
+.mini-category-amount {
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.mini-progress-container {
+  height: 6px;
+  background-color: var(--card-medium);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.light-theme .mini-progress-container {
+  background-color: #e2e8f0;
+}
+
+.mini-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.budget-status {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.budget-status-good,
+.budget-status-warning,
+.budget-status-danger {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.budget-status-good {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.budget-status-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.budget-status-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+/* Enhanced Expense Card Styling */
+.expense-amount-container {
+  display: flex;
+  align-items: baseline;
+  margin: 15px 0;
+}
+
+.expense-currency {
+  font-size: 1.5rem;
+  margin-right: 4px;
+  color: var(--danger);
+  opacity: 0.8;
+}
+
+.expense-amount-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--danger);
+  line-height: 1;
+}
+
+.expense-summary {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 20px;
+}
+
+.expense-summary-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-summary-chart {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.expense-summary-bg {
+  fill: none;
+  stroke: rgba(30, 41, 59, 0.4);
+  stroke-width: 3;
+}
+
+.light-theme .expense-summary-bg {
+  stroke: #e2e8f0;
+}
+
+.expense-summary-fill {
+  fill: none;
+  stroke: var(--danger);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.expense-summary-text {
+  fill: var(--danger);
+  font-size: 0.7rem;
+  text-anchor: middle;
+  font-weight: 700;
+  transform: rotate(90deg);
+}
+
+.expense-summary-label {
+  position: absolute;
+  bottom: 15px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.last-expense-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--card-medium);
+  border-radius: 10px;
+}
+
+.light-theme .last-expense-card {
+  background-color: var(--hover-bg-light);
+  border: 1px solid var(--border);
+}
+
+.last-expense-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.last-expense-info {
+  flex: 1;
+}
+
+.last-expense-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.last-expense-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.no-expense-message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-small:hover {
+  background-color: rgba(124, 58, 237, 0.2);
+}
+
+/* Enhanced Wallet Card */
+.wallet-balance-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.wallet-balance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(124, 58, 237, 0.1);
+  border-radius: 12px;
+  color: var(--primary);
+}
+
+.light-theme .wallet-balance-icon {
+  background-color: var(--hover-bg-light);
+}
+
+.wallet-balance-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.wallet-trend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.875rem;
+  color: var(--success);
+}
+
+.savings-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 6px;
+}
+
+.savings-progress-label {
+  color: var(--text-muted);
+}
+
+.savings-progress-value {
+  font-weight: 500;
+}
+
+.savings-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.savings-percentage {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.savings-estimate {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Budget Overview Cards - Light Mode Fix */
+.light-theme .budget-overview-stat,
+.light-theme .budget-stat-card,
+.light-theme .budget-stat-item,
+.light-theme .budget-card-item,
+.light-theme .budget-overview-item {
+  background-color: white !important;
+  border: 1px solid var(--border-light) !important;
+  color: var(--text-light) !important;
+}
+
+/* Budget Usage Section - Light Mode Fix */
+.light-theme .budget-usage,
+.light-theme .budget-usage-section,
+.light-theme .budget-usage-container,
+.light-theme .budget-progress-container {
+  background-color: white !important;
+  border: 1px solid var(--border-light) !important;
+  color: var(--text-light) !important;
+}
+
+/* Text color fixes for budget items */
+.light-theme .budget-stat-label,
+.light-theme .budget-label,
+.light-theme .stat-label,
+.light-theme .budget-title,
+.light-theme .budget-overview-title,
+.light-theme .budget-usage-title {
+  color: var(--text-light) !important;
+}
+
+.light-theme .budget-value,
+.light-theme .budget-stat-value,
+.light-theme .stat-value,
+.light-theme .budget-amount,
+.light-theme .budget-overview-value {
+  color: var(--text-light) !important;
+  font-weight: 600;
+}
+
+/* More specific selectors to target those exact cards */
+.light-theme [class*="budget-overview"] > div,
+.light-theme [class*="budget-stat"] > div,
+.light-theme [class*="budget-usage"] > div {
+  background-color: white !important;
+  color: var(--text-light) !important;
+}
+
+/* Target by data attributes if they exist */
+.light-theme [data-type="budget-overview"],
+.light-theme [data-type="budget-usage"] {
+  background-color: white !important;
+  color: var(--text-light) !important;
+}
+
+/* Budget Usage Container - Force Light Mode Fix */
+.light-theme [class*="budget-overview"] ~ div,
+.light-theme .budget-usage-container,
+.light-theme .budget-progress-section,
+.light-theme .budget-overall-usage {
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+  border-radius: 8px;
+}
+
+/* Direct targeting with extreme priority */
+.light-theme div:has([class*="budget-usage"]),
+.light-theme div:has([class*="Overall Budget Usage"]) {
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+/* The most specific selector - directly target the gray box by its children text */
+.light-theme div:has(> div:contains("Overall Budget Usage")) {
+  background-color: white !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* If the element has an inline style */
+.light-theme [style*="background"] {
+  background-color: white !important;
+}
+
+/* Target by DOM position */
+.light-theme .budget-overview + div,
+.light-theme .budget-overview ~ div:nth-child(2) {
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+/* Target specific element in Budget page that's still staying gray */
+.light-theme .overall-budget-bar,
+.light-theme .budget-bar-container,
+.light-theme div:has(span:contains("Good")),
+.light-theme div:has(span:contains("Warning")),
+.light-theme div:has(span:contains("Critical")) {
+  background-color: white !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+}
