@@ -823,13 +823,14 @@ export default function Home({ darkMode, setDarkMode }) {
       )}
       
       {showBudgetEditModal && (
-        <BudgetEditModal 
-          currentBudget={monthlyBudget}
-          currentSavingsGoal={savingsGoal}
-          onClose={() => setShowBudgetEditModal(false)}
-          onUpdateBudgetSettings={handleBudgetSettingsUpdate}
-        />
-      )}
+  <BudgetEditModal
+    darkMode={darkMode}
+    onClose={() => setShowBudgetEditModal(false)}
+    currentBudget={monthlyBudget}
+    currentSavingsGoal={savingsGoal}
+    onBudgetUpdate={handleBudgetSettingsUpdate} // This is the key fix!
+  />
+)}
       
       {/* Toast Container */}
       <ToastContainer position="bottom-right" theme={darkMode ? 'dark' : 'light'} />

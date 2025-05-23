@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 
-export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }) {
+export default function AddIncomeModal({ onClose, onAddIncome, darkMode = false }) {
   const [amount, setAmount] = useState('');
   
   const handleSubmit = (e) => {
@@ -14,13 +14,14 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     onAddIncome(parseFloat(amount));
   };
   
+  // Theme-aware styles with proper contrast
   const theme = {
     backgroundColor: darkMode ? '#0f172a' : '#ffffff',
-    textColor: darkMode ? '#ffffff' : '#1e293b',
-    mutedTextColor: darkMode ? '#94a3b8' : '#64748b',
-    inputBackground: darkMode ? '#1e293b' : '#f1f5f9',
-    borderColor: darkMode ? '#334155' : '#e2e8f0',
-    overlayColor: darkMode ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+    textColor: darkMode ? '#ffffff' : '#000000', // BLACK text for light mode
+    mutedTextColor: darkMode ? '#94a3b8' : '#374151', // DARK GRAY for light mode
+    inputBackground: darkMode ? '#1e293b' : '#f9fafb',
+    borderColor: darkMode ? '#334155' : '#d1d5db',
+    overlayColor: darkMode ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.5)',
   };
   
   const modalOverlayStyle = {
@@ -41,8 +42,8 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     borderRadius: '10px',
     width: '90%',
     maxWidth: '450px',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-    border: `1px solid ${theme.borderColor}`
+    boxShadow: darkMode ? '0 10px 25px rgba(0, 0, 0, 0.5)' : '0 10px 25px rgba(0, 0, 0, 0.15)',
+    border: `2px solid ${theme.borderColor}`
   };
   
   const modalHeaderStyle = {
@@ -50,7 +51,7 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottom: `1px solid ${theme.borderColor}`
+    borderBottom: `2px solid ${theme.borderColor}`
   };
   
   const modalBodyStyle = {
@@ -61,7 +62,8 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     padding: '15px 20px',
     display: 'flex',
     justifyContent: 'flex-end',
-    gap: '10px'
+    gap: '10px',
+    borderTop: `1px solid ${theme.borderColor}`
   };
   
   const inputGroupStyle = {
@@ -72,7 +74,8 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     display: 'block',
     marginBottom: '8px',
     fontSize: '14px',
-    color: theme.mutedTextColor
+    color: theme.textColor, // BLACK in light mode, WHITE in dark mode
+    fontWeight: 'bold'
   };
   
   const inputStyle = {
@@ -81,45 +84,51 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
     fontSize: '16px',
     backgroundColor: theme.inputBackground, 
     color: theme.textColor,
-    border: `1px solid ${theme.borderColor}`,
+    border: `2px solid ${theme.borderColor}`,
     borderRadius: '6px',
     outline: 'none'
   };
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: 'white',
+    color: 'black', // Always white text for primary buttons
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    transition: 'background-color 0.2s ease'
   };
   
   const buttonSecondaryStyle = {
     backgroundColor: 'transparent',
-    color: theme.mutedTextColor,
-    border: `1px solid ${theme.borderColor}`,
+    color: theme.textColor, // BLACK in light mode, WHITE in dark mode
+    border: `2px solid ${theme.borderColor}`,
     padding: '10px 20px',
     borderRadius: '6px',
     cursor: 'pointer',
-    fontSize: '14px'
+    fontSize: '14px',
+    transition: 'all 0.2s ease'
   };
   
   return (
     <div style={modalOverlayStyle}>
       <div style={modalStyle}>
         <div style={modalHeaderStyle}>
-          <h2 style={{ margin: 0, fontSize: '20px', color: theme.textColor }}>Add Income</h2>
+          <h2 style={{ margin: 0, fontSize: '20px', color: theme.textColor, fontWeight: 'bold' }}>
+            Add Income
+          </h2>
           <button 
             onClick={onClose}
             style={{ 
               background: 'transparent', 
-              border: 'none', 
+              border: `1px solid ${theme.borderColor}`, 
               cursor: 'pointer',
-              color: theme.mutedTextColor,
-              fontSize: '20px'
+              color: theme.textColor,
+              fontSize: '20px',
+              padding: '8px',
+              borderRadius: '4px'
             }}
           >
             <FiX />
@@ -144,10 +153,17 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = true }
           </div>
           
           <div style={modalFooterStyle}>
-            <button type="button" onClick={onClose} style={buttonSecondaryStyle}>
+            <button 
+              type="button" 
+              onClick={onClose} 
+              style={buttonSecondaryStyle}
+            >
               Cancel
             </button>
-            <button type="submit" style={buttonPrimaryStyle}>
+            <button 
+              type="submit" 
+              style={buttonPrimaryStyle}
+            >
               Add Income
             </button>
           </div>

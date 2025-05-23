@@ -18,12 +18,18 @@ export default function BudgetEditModal({
       return;
     }
     
-    onSave({
-      monthlyBudget: parseFloat(monthlyBudget),
-      savingsGoal: parseFloat(savingsGoal)
-    });
+    // Call onSave function with the data
+    if (onSave) {
+      onSave({
+        monthlyBudget: parseFloat(monthlyBudget),
+        savingsGoal: parseFloat(savingsGoal)
+      });
+    }
+    
+    // Close modal
+    onClose();
   };
-  
+
   // Styles based on theme
   const colors = {
     dark: {
@@ -111,13 +117,14 @@ export default function BudgetEditModal({
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: 'white',
+    color: 'black', // Fixed: white color for visibility in both themes
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    transition: 'background-color 0.2s ease'
   };
   
   const buttonSecondaryStyle = {
@@ -127,14 +134,17 @@ export default function BudgetEditModal({
     padding: '10px 20px',
     borderRadius: '6px',
     cursor: 'pointer',
-    fontSize: '14px'
+    fontSize: '14px',
+    transition: 'all 0.2s ease'
   };
   
   return (
     <div style={modalOverlayStyle}>
       <div style={modalStyle}>
         <div style={modalHeaderStyle}>
-          <h2 style={{ margin: 0, fontSize: '20px', color: theme.text }}>Edit Budget Settings</h2>
+          <h2 style={{ margin: 0, fontSize: '20px', color: theme.text }}>
+            Edit Budget Settings
+          </h2>
           <button 
             onClick={onClose}
             style={{ 
@@ -142,7 +152,16 @@ export default function BudgetEditModal({
               border: 'none', 
               cursor: 'pointer',
               color: theme.mutedText,
-              fontSize: '20px'
+              fontSize: '20px',
+              padding: '5px',
+              borderRadius: '4px',
+              transition: 'color 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.color = theme.text;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = theme.mutedText;
             }}
           >
             <FiX />
@@ -162,6 +181,14 @@ export default function BudgetEditModal({
                 min="0"
                 step="1"
                 required
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#7c3aed';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(124, 58, 237, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = theme.border;
+                  e.target.style.boxShadow = 'none';
+                }}
               />
             </div>
             
@@ -176,15 +203,44 @@ export default function BudgetEditModal({
                 min="0"
                 step="1"
                 required
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#7c3aed';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(124, 58, 237, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = theme.border;
+                  e.target.style.boxShadow = 'none';
+                }}
               />
             </div>
           </div>
           
           <div style={modalFooterStyle}>
-            <button type="button" onClick={onClose} style={buttonSecondaryStyle}>
+            <button 
+              type="button" 
+              onClick={onClose} 
+              style={buttonSecondaryStyle}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = theme.inputBg;
+                e.target.style.borderColor = '#7c3aed';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.borderColor = theme.border;
+              }}
+            >
               Cancel
             </button>
-            <button type="submit" style={buttonPrimaryStyle}>
+            <button 
+              type="submit" 
+              style={buttonPrimaryStyle}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#6d28d9';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#7c3aed';
+              }}
+            >
               Save Changes
             </button>
           </div>
