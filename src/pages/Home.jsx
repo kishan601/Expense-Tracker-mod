@@ -826,9 +826,9 @@ export default function Home({ darkMode, setDarkMode }) {
   <BudgetEditModal
     darkMode={darkMode}
     onClose={() => setShowBudgetEditModal(false)}
+    onSave={handleBudgetSettingsUpdate} // Make sure this matches!
     currentBudget={monthlyBudget}
     currentSavingsGoal={savingsGoal}
-    onBudgetUpdate={handleBudgetSettingsUpdate} // This is the key fix!
   />
 )}
       

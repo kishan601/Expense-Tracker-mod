@@ -91,7 +91,7 @@ export default function AddIncomeModal({ onClose, onAddIncome, darkMode = false 
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: 'black', // Always white text for primary buttons
+    color: 'white', // Always white text for primary buttons
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
