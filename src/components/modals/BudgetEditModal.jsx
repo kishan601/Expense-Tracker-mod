@@ -4,7 +4,7 @@ import { FiX } from 'react-icons/fi';
 export default function BudgetEditModal({ 
   darkMode, 
   onClose, 
-  onSave, 
+  onSave, // Make sure it's onSave, not onBudgetUpdate
   currentBudget, 
   currentSavingsGoal 
 }) {
@@ -18,7 +18,7 @@ export default function BudgetEditModal({
       return;
     }
     
-    // Call onSave function with the data
+    // Call onSave function with the data (this should match your Home.jsx)
     if (onSave) {
       onSave({
         monthlyBudget: parseFloat(monthlyBudget),
@@ -30,27 +30,15 @@ export default function BudgetEditModal({
     onClose();
   };
 
-  // Styles based on theme
-  const colors = {
-    dark: {
-      modalBg: '#0f172a',
-      inputBg: '#1e293b',
-      border: '#334155',
-      text: '#ffffff',
-      mutedText: '#94a3b8',
-      overlay: 'rgba(0, 0, 0, 0.7)'
-    },
-    light: {
-      modalBg: '#ffffff',
-      inputBg: '#f1f5f9',
-      border: '#cbd5e1',
-      text: '#1e293b',
-      mutedText: '#64748b',
-      overlay: 'rgba(15, 23, 42, 0.5)'
-    }
+  // Theme-aware styles with proper contrast
+  const theme = {
+    backgroundColor: darkMode ? '#0f172a' : '#ffffff',
+    textColor: darkMode ? '#ffffff' : '#000000',
+    mutedTextColor: darkMode ? '#94a3b8' : '#374151',
+    inputBackground: darkMode ? '#1e293b' : '#f9fafb',
+    borderColor: darkMode ? '#334155' : '#d1d5db',
+    overlayColor: darkMode ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.5)',
   };
-  
-  const theme = darkMode ? colors.dark : colors.light;
   
   const modalOverlayStyle = {
     position: 'fixed',
@@ -58,7 +46,7 @@ export default function BudgetEditModal({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: theme.overlay,
+    backgroundColor: theme.overlayColor,
     zIndex: 1000,
     display: 'flex',
     justifyContent: 'center',
@@ -66,12 +54,12 @@ export default function BudgetEditModal({
   };
   
   const modalStyle = {
-    backgroundColor: theme.modalBg,
+    backgroundColor: theme.backgroundColor,
     borderRadius: '10px',
     width: '90%',
     maxWidth: '450px',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
-    border: `1px solid ${theme.border}`
+    boxShadow: darkMode ? '0 10px 25px rgba(0, 0, 0, 0.5)' : '0 10px 25px rgba(0, 0, 0, 0.15)',
+    border: `2px solid ${theme.borderColor}`
   };
   
   const modalHeaderStyle = {
@@ -79,7 +67,7 @@ export default function BudgetEditModal({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottom: `1px solid ${theme.border}`
+    borderBottom: `2px solid ${theme.borderColor}`
   };
   
   const modalBodyStyle = {
@@ -90,7 +78,8 @@ export default function BudgetEditModal({
     padding: '15px 20px',
     display: 'flex',
     justifyContent: 'flex-end',
-    gap: '10px'
+    gap: '10px',
+    borderTop: `1px solid ${theme.borderColor}`
   };
   
   const inputGroupStyle = {
@@ -101,23 +90,24 @@ export default function BudgetEditModal({
     display: 'block',
     marginBottom: '8px',
     fontSize: '14px',
-    color: theme.mutedText
+    color: theme.textColor,
+    fontWeight: 'bold'
   };
   
   const inputStyle = {
     width: '100%',
     padding: '10px 15px',
     fontSize: '16px',
-    backgroundColor: theme.inputBg,
-    color: theme.text,
-    border: `1px solid ${theme.border}`,
+    backgroundColor: theme.inputBackground,
+    color: theme.textColor,
+    border: `2px solid ${theme.borderColor}`,
     borderRadius: '6px',
     outline: 'none'
   };
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: 'black', // Fixed: white color for visibility in both themes
+    color: '#ffffff',
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
@@ -129,8 +119,8 @@ export default function BudgetEditModal({
   
   const buttonSecondaryStyle = {
     backgroundColor: 'transparent',
-    color: theme.mutedText,
-    border: `1px solid ${theme.border}`,
+    color: theme.textColor,
+    border: `2px solid ${theme.borderColor}`,
     padding: '10px 20px',
     borderRadius: '6px',
     cursor: 'pointer',
@@ -142,26 +132,19 @@ export default function BudgetEditModal({
     <div style={modalOverlayStyle}>
       <div style={modalStyle}>
         <div style={modalHeaderStyle}>
-          <h2 style={{ margin: 0, fontSize: '20px', color: theme.text }}>
+          <h2 style={{ margin: 0, fontSize: '20px', color: theme.textColor, fontWeight: 'bold' }}>
             Edit Budget Settings
           </h2>
           <button 
             onClick={onClose}
             style={{ 
               background: 'transparent', 
-              border: 'none', 
+              border: `1px solid ${theme.borderColor}`, 
               cursor: 'pointer',
-              color: theme.mutedText,
+              color: theme.textColor,
               fontSize: '20px',
-              padding: '5px',
-              borderRadius: '4px',
-              transition: 'color 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = theme.text;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = theme.mutedText;
+              padding: '8px',
+              borderRadius: '4px'
             }}
           >
             <FiX />
@@ -181,14 +164,6 @@ export default function BudgetEditModal({
                 min="0"
                 step="1"
                 required
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#7c3aed';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(124, 58, 237, 0.1)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = theme.border;
-                  e.target.style.boxShadow = 'none';
-                }}
               />
             </div>
             
@@ -203,14 +178,6 @@ export default function BudgetEditModal({
                 min="0"
                 step="1"
                 required
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#7c3aed';
-                  e.target.style.boxShadow = '0 0 0 3px rgba(124, 58, 237, 0.1)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = theme.border;
-                  e.target.style.boxShadow = 'none';
-                }}
               />
             </div>
           </div>
@@ -220,26 +187,12 @@ export default function BudgetEditModal({
               type="button" 
               onClick={onClose} 
               style={buttonSecondaryStyle}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = theme.inputBg;
-                e.target.style.borderColor = '#7c3aed';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'transparent';
-                e.target.style.borderColor = theme.border;
-              }}
             >
               Cancel
             </button>
             <button 
               type="submit" 
               style={buttonPrimaryStyle}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#6d28d9';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = '#7c3aed';
-              }}
             >
               Save Changes
             </button>
