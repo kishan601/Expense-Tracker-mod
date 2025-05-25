@@ -107,7 +107,7 @@ export default function BudgetEditModal({
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: '#ffffff',
+    color: 'black',
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',

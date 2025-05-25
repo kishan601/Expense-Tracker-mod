@@ -121,7 +121,7 @@ export default function EditBillModal({
 
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: '#ffffff',
+    color: 'light-grey',
     border: 'none',
     padding: '12px 24px',
     borderRadius: '6px',

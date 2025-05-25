@@ -99,7 +99,7 @@ export default function AddExpenseModal({ onClose, onAddExpense, darkMode = fals
   
   const buttonPrimaryStyle = {
     backgroundColor: '#7c3aed',
-    color: 'white', // Always white text for primary buttons
+    color: 'light-grey', // Always white text for primary buttons
     border: 'none',
     padding: '10px 20px',
     borderRadius: '6px',
